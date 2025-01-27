@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gym_food/pages/Blog.dart';
 import 'package:gym_food/pages/homepage.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.green),
-      home: GymFoodApp(),
+      home: BlogPage(),
     );
   }
 }

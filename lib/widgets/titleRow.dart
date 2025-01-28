@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class TitleRow extends StatelessWidget {
+class TitleRow extends StatefulWidget {
   final String title;
   const TitleRow({super.key, required this.title});
 
+  @override
+  State<TitleRow> createState() => _TitleRowState();
+}
+
+class _TitleRowState extends State<TitleRow> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,8 +24,9 @@ class TitleRow extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            title,
+            widget.title,
             style: GoogleFonts.manrope(
+              color: Colors.black,
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
@@ -36,8 +42,9 @@ class TitleRow extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(
-                  title,
+                  widget.title,
                   style: GoogleFonts.manrope(
+                    color: Colors.white,
                     fontSize: 10,
                     fontWeight: FontWeight.bold,
                   ),

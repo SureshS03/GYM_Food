@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gym_food/widgets/Commandbob.dart';
+import 'package:gym_food/widgets/titleRow.dart';
 
 class Blogwidget extends StatelessWidget {
   const Blogwidget({super.key});
@@ -20,47 +21,7 @@ class Blogwidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              alignment: Alignment.center,
-              width: MediaQuery.of(context).size.width * 0.80,
-              padding: EdgeInsets.symmetric(horizontal: 28, vertical: 15),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Colors.white,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Blog Details',
-                    style: GoogleFonts.manrope(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      Icon(Icons.home_filled),
-                      SizedBox(width: 10),
-                      Container(
-                        padding: EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 140, 203, 255),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Text(
-                          'Blog Details',
-                          style: GoogleFonts.manrope(
-                            fontSize: 10,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      )
-                    ],
-                  )
-                ],
-              ),
-            ),
+            TitleRow(title: 'Blog Details'),
             SizedBox(height: 30),
             Container(
               //padding: EdgeInsets.all(10),

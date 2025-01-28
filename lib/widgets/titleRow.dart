@@ -38,13 +38,13 @@ class _TitleRowState extends State<TitleRow> {
               Container(
                 padding: EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 140, 203, 255),
+                  color: const Color(0xffd8d6fe),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(
                   widget.title,
                   style: GoogleFonts.manrope(
-                    color: Colors.white,
+                    color: Color(0xff635bff),
                     fontSize: 10,
                     fontWeight: FontWeight.bold,
                   ),

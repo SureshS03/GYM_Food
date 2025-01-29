@@ -14,7 +14,7 @@ class CustomForms extends StatefulWidget {
 class _CustomFormsState extends State<CustomForms> {
   String dropdownValue = 'One';
   String dropdownValue2 = 'One';
-  String gender = 'Male';
+  //String gender = 'Male';
   bool industryChecked = false;
   bool switchValue = false;
 
@@ -109,21 +109,14 @@ class _CustomFormsState extends State<CustomForms> {
                               ),
                             ),
                             SizedBox(width: 20),
-                            Expanded(
-                              flex: 1,
-                              child: CalendarApp()
-                            )
+                            Expanded(flex: 1, child: CalendarApp())
                           ],
                         ),
                         const SizedBox(height: 16),
                         GenderSelector(
-                          selectedGender: gender,
-                          onChanged: (newValue) {
-                            setState(() {
-                              gender = newValue!;
-                            });
-                          },
-                        ),
+                            //selectedGender: gender,
+                            //onChanged: (newValue) {},
+                            ),
                         const SizedBox(height: 16),
                         CheckBoxes(),
                         const SizedBox(height: 16),
@@ -299,13 +292,23 @@ class DropdownSelector extends StatelessWidget {
   }
 }
 
-class GenderSelector extends StatelessWidget {
-  final String selectedGender;
-  final Function(String?) onChanged;
+class GenderSelector extends StatefulWidget {
+  //final String selectedGender;
+  //final Function(String?) onChanged;
 
-  const GenderSelector(
-      {super.key, required this.selectedGender, required this.onChanged});
+  const GenderSelector({
+    super.key,
+    /*required this.selectedGender, required this.onChanged*/
+  });
 
+  @override
+  State<GenderSelector> createState() => _GenderSelectorState();
+}
+
+class _GenderSelectorState extends State<GenderSelector> {
+  String selectedGender = "Male";
+
+  final List<String> genders = ["Male", "Female", "Disabled"];
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -321,65 +324,39 @@ class GenderSelector extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                Radio<String>(
-                  activeColor: Color(0xff635bff),
-                  hoverColor: Colors.transparent,
-                  value: 'Male',
-                  groupValue: selectedGender,
-                  onChanged: onChanged,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: List.generate(genders.length, (index) {
+              return MouseRegion(
+                cursor: (index == 2)
+                    ? SystemMouseCursors.forbidden
+                    : SystemMouseCursors.click,
+                child: Row(
+                  children: [
+                    Radio<String>(
+                      activeColor: Color(0xff635bff),
+                      hoverColor: Colors.transparent,
+                      value: genders[index],
+                      groupValue: selectedGender,
+                      onChanged: (index == 2)
+                          ? null
+                          : (newValue) {
+                              setState(() {
+                                selectedGender = newValue!;
+                              });
+                            },
+                    ),
+                    Text(
+                      genders[index],
+                      style: GoogleFonts.manrope(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
                 ),
-                Text(
-                  'Male',
-                  style: GoogleFonts.manrope(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Radio<String>(
-                  activeColor: Color(0xff635bff),
-                  hoverColor: Colors.transparent,
-                  value: "Female",
-                  groupValue: selectedGender,
-                  onChanged: onChanged,
-                ),
-                Text(
-                  'Female',
-                  style: GoogleFonts.manrope(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Radio<String>(
-                  hoverColor: Colors.transparent,
-                  activeColor: Color(0xff635bff),
-                  value: "Disabled",
-                  groupValue: selectedGender,
-                  onChanged: onChanged,
-                ),
-                Text(
-                  'Disabled',
-                  style: GoogleFonts.manrope(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ],
-            )
-          ],
-        ),
+              );
+            })),
       ],
     );
   }
@@ -538,7 +515,6 @@ class _SwitchesState extends State<Switches> {
 }
 
 class SliderWidgets extends StatefulWidget {
-
   double sliderValue;
   SliderWidgets({super.key, required this.sliderValue});
 
@@ -622,9 +598,7 @@ class CustomCalendrer extends StatefulWidget {
 class _CustomCalendrerState extends State<CustomCalendrer> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-
-    );
+    return Container();
   }
 }
 

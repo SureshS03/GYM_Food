@@ -65,21 +65,27 @@ class Textfieldforms extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 10),
-              TextField(
-                cursorWidth: 0.8,
-                decoration: InputDecoration(
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xff635bff), width: 0.5),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  hintText: hint,
-                  hintStyle: GoogleFonts.manrope(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                  ),
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey, width: 0.5),
-                    borderRadius: BorderRadius.circular(10),
+              Theme(
+                data: ThemeData(
+                    textSelectionTheme: TextSelectionThemeData(
+                        selectionColor: Color(0xff635bff))),
+                child: TextField(
+                  cursorWidth: 0.8,
+                  decoration: InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(color: Color(0xff635bff), width: 1),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    hintText: hint,
+                    hintStyle: GoogleFonts.manrope(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                    ),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey, width: 0.5),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                   ),
                 ),
               ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gym_food/widgets/TextFieldForms.dart';
+import 'package:gym_food/widgets/calendrer.dart';
 import 'package:gym_food/widgets/titleRow.dart';
 
 class CustomForms extends StatefulWidget {
@@ -16,7 +17,6 @@ class _CustomFormsState extends State<CustomForms> {
   String gender = 'Male';
   bool industryChecked = false;
   bool switchValue = false;
-  double sliderValue = 0.5;
 
   @override
   Widget build(BuildContext context) {
@@ -93,6 +93,8 @@ class _CustomFormsState extends State<CustomForms> {
                         ),
                         SizedBox(height: 20),
                         Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Expanded(
                               flex: 1,
@@ -107,12 +109,9 @@ class _CustomFormsState extends State<CustomForms> {
                               ),
                             ),
                             SizedBox(width: 20),
-                            //later work
                             Expanded(
                               flex: 1,
-                              child: Text(
-                                'Date',
-                              ),
+                              child: CalendarApp()
                             )
                           ],
                         ),
@@ -130,18 +129,7 @@ class _CustomFormsState extends State<CustomForms> {
                         const SizedBox(height: 16),
                         Switches(),
                         const SizedBox(height: 16),
-                        SizedBox(
-                          width: 500,
-                          child: Slider(
-                            activeColor: Color(0xff635bff),
-                            value: sliderValue,
-                            onChanged: (value) {
-                              setState(() {
-                                sliderValue = value;
-                              });
-                            },
-                          ),
-                        ),
+                        SliderWidgets(sliderValue: 0.5),
                         const SizedBox(height: 16),
                         SizedBox(
                           width: 500,
@@ -226,11 +214,14 @@ class _CustomFormsState extends State<CustomForms> {
                           ),
                         ),
                         const SizedBox(height: 16),
+                        VolumeIncDec(),
+                        const SizedBox(height: 16),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             CustomButton(text: "Add New", color: Colors.blue),
-                            CustomButton(text: "Add New", color: Colors.lightBlueAccent),
+                            CustomButton(
+                                text: "Add New", color: Colors.lightBlueAccent),
                             CustomButton(text: "Success", color: Colors.green),
                             CustomButton(text: "Info", color: Colors.lightBlue),
                             CustomButton(text: "Warning", color: Colors.orange),
@@ -546,6 +537,97 @@ class _SwitchesState extends State<Switches> {
   }
 }
 
+class SliderWidgets extends StatefulWidget {
+
+  double sliderValue;
+  SliderWidgets({super.key, required this.sliderValue});
+
+  @override
+  State<SliderWidgets> createState() => _SliderWidgetsState();
+}
+
+class _SliderWidgetsState extends State<SliderWidgets> {
+  //double sliderValue = 0.5;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 500,
+      child: Slider(
+        activeColor: Color(0xff635bff),
+        value: widget.sliderValue,
+        onChanged: (value) {
+          setState(() {
+            widget.sliderValue = value;
+          });
+        },
+      ),
+    );
+  }
+}
+
+class VolumeIncDec extends StatefulWidget {
+  const VolumeIncDec({super.key});
+
+  @override
+  State<VolumeIncDec> createState() => _VolumeIncDecState();
+}
+
+class _VolumeIncDecState extends State<VolumeIncDec> {
+  double volumeValue = 0.5;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        IconButton(
+          icon: Icon(Icons.volume_down),
+          onPressed: () {
+            if (volumeValue != 0.10000000000000003) {
+              print(volumeValue);
+              setState(() {
+                volumeValue -= 0.1;
+              });
+            }
+          },
+        ),
+        SizedBox(width: 8),
+        SliderWidgets(
+          sliderValue: volumeValue,
+        ),
+        SizedBox(width: 8),
+        IconButton(
+          icon: Icon(Icons.volume_up),
+          onPressed: () {
+            if (volumeValue != 0.9999999999999999) {
+              print(volumeValue);
+              setState(() {
+                volumeValue += 0.1;
+              });
+            }
+          },
+        ),
+      ],
+    );
+  }
+}
+
+class CustomCalendrer extends StatefulWidget {
+  const CustomCalendrer({super.key});
+
+  @override
+  State<CustomCalendrer> createState() => _CustomCalendrerState();
+}
+
+class _CustomCalendrerState extends State<CustomCalendrer> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+
+    );
+  }
+}
+
 class CustomButton extends StatelessWidget {
   final String text;
   final Color color;
@@ -563,7 +645,8 @@ class CustomButton extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       ),
       onPressed: () {},
-      child: Text(text, style: GoogleFonts.manrope(fontSize: 14,color: Colors.white)),
+      child: Text(text,
+          style: GoogleFonts.manrope(fontSize: 14, color: Colors.white)),
     );
   }
 }

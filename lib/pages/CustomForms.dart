@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:gym_food/widgets/TextFieldForms.dart';
 import 'package:gym_food/widgets/calendrer.dart';
 import 'package:gym_food/widgets/titleRow.dart';
-
 import '../widgets/CheckBoxe.dart';
 import '../widgets/CustomButtons.dart';
 import '../widgets/DropDown.dart';
@@ -22,9 +21,46 @@ class CustomForms extends StatefulWidget {
 class _CustomFormsState extends State<CustomForms> {
   String dropdownValue = 'One';
   String dropdownValue2 = 'One';
+  String dropdownValue3 = 'One';
+
   //String gender = 'Male';
   bool industryChecked = false;
   bool switchValue = false;
+
+  final List<bool> boxChecker = List.generate(3, (index) => false);
+  void onChangedCheckBox(bool value, int index) {
+    setState(() {
+      boxChecker[index] = value;
+    });
+  }
+
+  double volumeValue = 0.5;
+  void onChangedVolume(double value) {
+    setState(() {
+      volumeValue = value;
+    });
+  }
+
+  double sliderValue = 0.5;
+  void onChangedSlider(double value) {
+    setState(() {
+      sliderValue = value;
+    });
+  }
+
+  List<bool> switchChecker = List.generate(4, (index) => false);
+  void onChangedSwitch(bool value, int index) {
+    setState(() {
+      switchChecker[index] = value;
+    });
+  }
+
+  String selectedGender = "Male";
+  void onChangedGender(String? value) {
+    setState(() {
+      selectedGender = value!;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -121,13 +157,32 @@ class _CustomFormsState extends State<CustomForms> {
                           ],
                         ),
                         const SizedBox(height: 16),
-                        GenderSelector(),
+                        GenderSelector(
+                          selectedGender: selectedGender,
+                          onChanged: onChangedGender,
+                          genders: ["Male", "Female", "Disabled"],
+                        ),
                         const SizedBox(height: 16),
-                        CheckBoxes(),
+                        CheckBoxes(
+                          checker: boxChecker,
+                          text: ["One", "Two", "Three"],
+                          onChangedCheckBox: onChangedCheckBox,
+                        ),
                         const SizedBox(height: 16),
-                        Switches(),
+                        Switches(
+                          checker: switchChecker,
+                          text: [
+                            "Enter Text",
+                            "Enter Text",
+                            "Enter Text",
+                            "Enter Text"
+                          ],
+                          onChangedSwitch: onChangedSwitch,
+                        ),
                         const SizedBox(height: 16),
-                        SliderWidgets(sliderValue: 0.5),
+                        SliderWidgets(
+                            sliderValue: sliderValue,
+                            onChanged: onChangedSlider),
                         const SizedBox(height: 16),
                         SizedBox(
                           width: 500,
@@ -136,74 +191,24 @@ class _CustomFormsState extends State<CustomForms> {
                             children: [
                               Container(
                                 width: 100,
-                                child: DropdownButtonFormField<String>(
-                                  borderRadius: BorderRadius.circular(10),
-                                  decoration: InputDecoration(
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Color(0xff635bff), width: 0.5),
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                        borderSide: BorderSide(
-                                          color: Colors.grey,
-                                          width: 0.5,
-                                        )),
-                                  ),
-                                  dropdownColor: Colors.white,
-                                  style: GoogleFonts.manrope(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                  ),
+                                child: DropdownSelector(
+                                  title: 'Select Dropdown',
                                   value: dropdownValue2,
-                                  items: ["One", "Two", "Three"]
-                                      .map((String item) {
-                                    return DropdownMenuItem<String>(
-                                      value: item,
-                                      child: Text(item),
-                                    );
-                                  }).toList(),
                                   onChanged: (newValue) {
                                     setState(() {
-                                      dropdownValue = newValue!;
+                                      dropdownValue2 = newValue!;
                                     });
                                   },
                                 ),
                               ),
                               Container(
                                 width: 100,
-                                child: DropdownButtonFormField<String>(
-                                  borderRadius: BorderRadius.circular(10),
-                                  decoration: InputDecoration(
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Color(0xff635bff), width: 0.5),
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                        borderSide: BorderSide(
-                                          color: Colors.grey,
-                                          width: 0.5,
-                                        )),
-                                  ),
-                                  dropdownColor: Colors.white,
-                                  style: GoogleFonts.manrope(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                  value: dropdownValue,
-                                  items: ["One", "Two", "Three"]
-                                      .map((String item) {
-                                    return DropdownMenuItem<String>(
-                                      value: item,
-                                      child: Text(item),
-                                    );
-                                  }).toList(),
+                                child: DropdownSelector(
+                                  title: 'Select Dropdown',
+                                  value: dropdownValue3,
                                   onChanged: (newValue) {
                                     setState(() {
-                                      dropdownValue = newValue!;
+                                      dropdownValue3 = newValue!;
                                     });
                                   },
                                 ),
@@ -212,7 +217,10 @@ class _CustomFormsState extends State<CustomForms> {
                           ),
                         ),
                         const SizedBox(height: 16),
-                        VolumeIncDec(),
+                        VolumeIncDec(
+                          volumeValue: volumeValue,
+                          onChangedVolume: onChangedVolume,
+                        ),
                         const SizedBox(height: 16),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,

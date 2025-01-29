@@ -1,22 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Switches extends StatefulWidget {
-  const Switches({super.key});
+class Switches extends StatelessWidget {
+  final List<bool> checker;
+  final List<String> text;
+  final Function onChangedSwitch;
+  const Switches({super.key, required this.checker, required this.text, required this.onChangedSwitch});
 
-  @override
-  State<Switches> createState() => _SwitchesState();
-}
-
-class _SwitchesState extends State<Switches> {
-  final List<bool> checker = List.generate(4, (index) => false);
-
-  final List<String> _Text = [
-    'Enter Text',
-    'Enter Text',
-    'Enter Text',
-    'Enter Text'
-  ];
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -51,18 +41,16 @@ class _SwitchesState extends State<Switches> {
                       inactiveTrackColor:
                           (index == 3) ? Color(0xff635bff) : Color(0xffe6e7eb),
                       onChanged: (index == 2 || index == 3)
-                          ? null // Disable the switch for the last two indices
+                          ? null
                           : (value) {
-                              setState(() {
-                                checker[index] = value;
-                              });
+                              onChangedSwitch(value, index);
                             },
                     ),
                   ),
                 ),
                 SizedBox(width: 8),
                 Text(
-                  _Text[index],
+                  text[index],
                   style: GoogleFonts.manrope(
                     fontSize: 14,
                     fontWeight: FontWeight.w600,

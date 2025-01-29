@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CustomButton extends StatefulWidget {
+class CustomButton extends StatelessWidget {
   final String text;
   final Color color;
 
   const CustomButton({super.key, required this.text, required this.color});
 
-  @override
-  State<CustomButton> createState() => _CustomButtonState();
-}
-
-class _CustomButtonState extends State<CustomButton> {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -19,11 +14,11 @@ class _CustomButtonState extends State<CustomButton> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
-        backgroundColor: widget.color,
+        backgroundColor: color,
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       ),
       onPressed: () {},
-      child: Text(widget.text,
+      child: Text(text,
           style: GoogleFonts.manrope(fontSize: 14, color: Colors.white)),
     );
   }

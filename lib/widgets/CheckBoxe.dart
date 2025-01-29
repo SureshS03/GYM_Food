@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CheckBoxes extends StatefulWidget {
-  const CheckBoxes({super.key});
-
-  @override
-  State<CheckBoxes> createState() => _CheckBoxesState();
-}
-
-class _CheckBoxesState extends State<CheckBoxes> {
-  final List<bool> checker = List.generate(3, (index) => false);
-
-  final List<String> _Text = ['Enter Text', 'Enter Text', 'Disabled'];
+class CheckBoxes extends StatelessWidget {
+  final List<bool> checker;
+  final List<String> text;
+  final Function onChangedCheckBox;
+  const CheckBoxes({super.key, required this.checker, required this.text, required this.onChangedCheckBox});
 
   @override
   Widget build(BuildContext context) {
@@ -52,9 +46,7 @@ class _CheckBoxesState extends State<CheckBoxes> {
                     onChanged: (index == 2)
                         ? null
                         : (value) {
-                            setState(() {
-                              checker[index] = value!;
-                            });
+                            onChangedCheckBox(value, index);
                           },
                   ),
                 ),
@@ -62,7 +54,7 @@ class _CheckBoxesState extends State<CheckBoxes> {
                   width: 8,
                 ),
                 Text(
-                  _Text[index],
+                  text[index],
                   style: GoogleFonts.manrope(
                     fontSize: 14,
                     fontWeight: FontWeight.w600,

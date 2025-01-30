@@ -70,7 +70,7 @@ class _CustomFormsState extends State<CustomForms> {
       margin: EdgeInsets.all(18),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        color: Color.fromARGB(255, 235, 235, 235),
+        color: Color(0xfff4f7fc),
       ),
       child: SingleChildScrollView(
         child: Column(

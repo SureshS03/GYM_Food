@@ -225,13 +225,31 @@ class _CustomFormsState extends State<CustomForms> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            CustomButton(text: "Add New", color: Colors.blue),
                             CustomButton(
-                                text: "Add New", color: Colors.lightBlueAccent),
-                            CustomButton(text: "Success", color: Colors.green),
-                            CustomButton(text: "Info", color: Colors.lightBlue),
-                            CustomButton(text: "Warning", color: Colors.orange),
-                            CustomButton(text: "Danger", color: Colors.red),
+                              text: "Add New",
+                              color: Colors.blue,
+                              textColor: Colors.white,
+                            ),
+                            CustomButton(
+                                text: "Add New",
+                                color: Colors.lightBlueAccent,
+                                textColor: Colors.white),
+                            CustomButton(
+                                text: "Success",
+                                color: Colors.green,
+                                textColor: Colors.white),
+                            CustomButton(
+                                text: "Info",
+                                color: Colors.lightBlue,
+                                textColor: Colors.white),
+                            CustomButton(
+                                text: "Warning",
+                                color: Colors.orange,
+                                textColor: Colors.white),
+                            CustomButton(
+                                text: "Danger",
+                                color: Colors.red,
+                                textColor: Colors.white),
                           ],
                         ),
                       ],

@@ -4,8 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 class CustomButton extends StatelessWidget {
   final String text;
   final Color color;
+  final Color textColor;
 
-  const CustomButton({super.key, required this.text, required this.color});
+  const CustomButton({super.key, required this.text, required this.color, required this.textColor});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class CustomButton extends StatelessWidget {
       ),
       onPressed: () {},
       child: Text(text,
-          style: GoogleFonts.manrope(fontSize: 14, color: Colors.white)),
+          style: GoogleFonts.manrope(fontSize: 14, color: textColor)),
     );
   }
 }

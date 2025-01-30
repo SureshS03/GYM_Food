@@ -31,11 +31,15 @@ class Switches extends StatelessWidget {
                   cursor: (index == 2 || index == 3)
                       ? SystemMouseCursors.forbidden
                       : SystemMouseCursors.click,
-                  child: SizedBox(
+                  child: Transform.scale(
+                    scale: 0.9,
                     child: Switch(
-                      inactiveThumbColor:
-                          (index == 3) ? Color(0xff635bff) : Colors.grey,
-                      activeColor: Color(0xff635bff),
+                      inactiveThumbColor:Colors.white,
+                          trackOutlineWidth: WidgetStatePropertyAll(0.5),
+                          padding: EdgeInsets.all(0),
+                      activeColor: Colors.white,
+                      activeTrackColor: Color(0xff635bff),
+                    
                       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       value: (index == 3) ? true : checker[index],
                       inactiveTrackColor:

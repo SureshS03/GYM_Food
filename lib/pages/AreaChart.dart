@@ -96,7 +96,6 @@ class _ChartState extends State<Chart> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Custom Area Chart")),
       body: Center(
         child: GestureDetector(
           onTapDown: (details) {

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:gym_food/pages/AreaChart.dart';
+import 'package:gym_food/pages/AreaChartPage.dart';
 import 'package:gym_food/pages/Blog.dart';
 import 'package:gym_food/pages/CustomForms.dart';
 import 'package:gym_food/pages/ToastPage.dart';
 import 'package:gym_food/pages/homepage.dart';
-import 'package:gym_food/test.dart';
+import 'package:gym_food/widgets/AreaChart.dart';
 import 'package:gym_food/widgets/ProfileCard.dart';
 
 void main() {
@@ -25,7 +25,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.green),
       home: Scaffold(
-        body: Chart(),
+        body: AreaChart(),
       ),
     );
   }

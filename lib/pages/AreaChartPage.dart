@@ -16,13 +16,15 @@ class _AreaChartState extends State<AreaChart> {
   bool isData1Hover = false;
   bool isData2Hover = false;
 
-  void onHover(bool dataX ,bool event) {
-    setState(() {
-      dataX = event;
-      print(dataX);
-    });
-    
-  }
+  void onHover(String dataKey, bool event) {
+  setState(() {
+    if (dataKey == "data1") {
+      isData1Hover = event;
+    } else if (dataKey == "data2") {
+      isData2Hover = event;
+    }
+  });
+}
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -75,8 +77,8 @@ class _AreaChartState extends State<AreaChart> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       MouseRegion(
-                        onEnter: (event) => onHover(isData1Hover, true),
-                        onExit: (event) => onHover(isData1Hover, false),
+                        onEnter: (event) => onHover("data1", true),
+                        onExit: (event) => onHover("data1", false),
                         child: Row(
                           children: [
                             Container(
@@ -100,8 +102,8 @@ class _AreaChartState extends State<AreaChart> {
                       ),
                       SizedBox(width: 20),
                       MouseRegion(
-                        onEnter: (event) => onHover(isData2Hover, true),
-                        onExit: (event) => onHover(isData2Hover, false),
+                        onEnter: (event) => onHover("data2", true),
+                        onExit: (event) => onHover("data2", false),
                         child: Row(
                           children: [
                             Container(

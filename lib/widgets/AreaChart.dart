@@ -79,7 +79,7 @@ class _ChartState extends State<Chart> {
                   bottom: 30,
                   child: CustomPaint(
                     painter: ChartPainter(
-                                            isData1Hover: widget.isData1Hover,
+                      isData1Hover: widget.isData1Hover,
                       isData2Hover: widget.isData2Hover,
                       Data1: Data1,
                       Data2: Data2,
@@ -319,21 +319,21 @@ class ChartPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final Paint line1Paint = Paint()
-      ..color = isData1Hover ? Color.fromARGB(255, 192, 189, 255) :Color(0xff635bff)
+      ..color = isData1Hover ? Color.fromARGB(255, 200, 198, 253) :Color(0xff635bff)
       ..strokeWidth = 2
       ..style = PaintingStyle.stroke;
 
     final Paint line2Paint = Paint()
-      ..color = isData2Hover ? Color.fromARGB(255, 182, 218, 244) : Color(0xFF1dcdc9)
+      ..color = isData2Hover ? Color.fromARGB(255, 182, 213, 236) : Color(0xFF1dcdc9)
       ..strokeWidth = 2
       ..style = PaintingStyle.stroke;
 
     final Paint areaPaint1 = Paint()
-      ..color = isData1Hover ? Color(0xffdfdefe).withOpacity(0.1) : Color(0xffdfdefe).withOpacity(0.5)
+      ..color = isData1Hover ? Color.fromARGB(255, 210, 209, 240).withOpacity(0.1) : Color(0xffdfdefe).withOpacity(0.5)
       ..style = PaintingStyle.fill;
 
     final Paint areaPaint2 = Paint()
-      ..color = isData2Hover ? Color(0xffb6daf4).withOpacity(0.1) : Color(0xffb6daf4).withOpacity(0.5)
+      ..color = isData2Hover ? Color.fromARGB(255, 182, 210, 231).withOpacity(0.1) : Color(0xffb6daf4).withOpacity(0.5)
       ..style = PaintingStyle.fill;
 
     drawLine(canvas, size, Data1, line1Paint, areaPaint1);
